@@ -46,18 +46,25 @@ def cal(n, X, Y, case='a', *, v1=0, vn=0):
         coeff[i, 1] = dy[i]/dx[i] - dx[i]/3 * (coeff[i+1, 2] + 2*coeff[i, 2]) #b
         coeff[i, 3] = (coeff[i+1, 2] - coeff[i, 2])/(3*dx[i]) #d
     coeff = coeff[:-1, ...]
+    
+    p1 = plot(show=False)
     for i in range(n-1):
         S.append(coeff[i][0] + coeff[i][1]*(x-X[i]) + coeff[i][2]*(x-X[i])**2 + coeff[i][3]*(x-X[i])**3)
-    return (coeff, S)
+        p2 = plot(S[i], (x, X[i], X[i+1]), show=False)
+        p1.append(p2[0])
+    # return (coeff, S)
+    return S, p1
     
 if __name__ == '__main__':
-    num = int(eval(input()))
+    n = int(eval(input()))
     X, Y = [], []
-    for i in range(num):
+    for i in range(n):
         recv = re.split(r'[\s,]+', input().strip())
         X.append(eval(recv[0]))
         Y.append(eval(recv[1]))
-    case = input().strip()
-    ans = cal(num, X, Y, case)
-    print(ans)
+    # case = input().strip()
+    S, P = cal(n, X, Y, 'a')
+    print(S)
+    P.show()
+    
 
