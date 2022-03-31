@@ -52,6 +52,7 @@ def cal(n, X, Y, case='a', *, v1=0, vn=0):
         S.append(coeff[i][0] + coeff[i][1]*(x-X[i]) + coeff[i][2]*(x-X[i])**2 + coeff[i][3]*(x-X[i])**3)
         p2 = plot(S[i], (x, X[i], X[i+1]), show=False)
         p1.append(p2[0])
+    p1.title = 'CASE:'+ case
     # return (coeff, S)
     return S, p1
     
