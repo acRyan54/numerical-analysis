@@ -58,13 +58,13 @@ def cal(n, X, Y, case='a', *, v1=0, vn=0):
 if __name__ == '__main__':
     n = int(eval(input()))
     X, Y = [], []
+    # 需要顺序输入(x坐标递增)
     for i in range(n):
         recv = re.split(r'[\s,]+', input().strip())
         X.append(eval(recv[0]))
         Y.append(eval(recv[1]))
-    # case = input().strip()
-    S, P = cal(n, X, Y, 'a')
-    print(S)
+    case = input().strip()
+    S, P = cal(n, X, Y, case)
+    for i in S:
+        print(i)
     P.show()
-    
-
