@@ -99,3 +99,11 @@ M = Matrix([[3, -2,  4, -2], [5,  3, -3, -2], [5, -2,  2, -2], [5, -2, -3,  3]])
 p = M.charpoly(lamda)
 factor(p.as_expr())
 ```
+
+## 和sympy及matplotlib的联动
+func = sp.lambdify(x, expr, 'numpy')
+这样func成为了一个可以被直接调用的函数
+t = np.arange(0, 1, 0.01)
+plt.plot(t, func(t), '-b')
+plt.scatter(X, func(X), color='r')
+plt.show()

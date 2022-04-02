@@ -10,7 +10,7 @@ a=[1,3,5,6,7]                # 将序列a中的元素顺序打乱
 random.shuffle(a)
 print(a)
 
-
+######################## 建议使用np.random.
 # 产生随机数列的方法:
 ### 1
 import random
