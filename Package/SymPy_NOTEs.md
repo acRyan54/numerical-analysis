@@ -107,3 +107,17 @@ t = np.arange(0, 1, 0.01)
 plt.plot(t, func(t), '-b')
 plt.scatter(X, func(X), color='r')
 plt.show()
+
+## hessian矩阵和jacobi矩阵
+from sympy import *
+u, v = symbols('u v')
+x = Function('x')(u, v)
+y = Function('y')(u, v)
+X = Matrix([x, y])
+Y = Matrix([u, v])
+X.jacobian(Y)
+
+from sympy import *
+x, y, z = symbols('x y z')
+f = Function('f')(x, y, z)
+hessian(f, (x, y, z))

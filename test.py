@@ -1,24 +1,9 @@
-# k-means算法非凸的一个反例
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-def np_max(x, y):
-    return (x+y+np.fabs(x-y))/2
-def np_min(x, y):
-    return (x+y-np.fabs(x-y))/2
-def func(x, y):
-    return np_min((x-1)**2+(y-1)**2,  (x+1)**2+(y+1)**2)
-
-x = np.arange(-2, 2, 0.1)
-y = np.arange(-2, 2, 0.1)
-X, Y = np.meshgrid(x, y)
-Z = func(X, Y)
-
-fig = plt.figure()
-ax = plt.axes(projection='3d')
-ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap = 'coolwarm')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_zlabel('z')
-plt.show()
+m = int(eval(input()))
+for n in range(m, m+20):
+    a = [1]
+    alpha = []
+    for i in range(1, n+10):
+        ai = a[i-1] + a[(i-1)//2]
+        a.append(ai)
+    k = (a[n+1]-a[n])/(a[n]-a[n-1])
+    print(k)
