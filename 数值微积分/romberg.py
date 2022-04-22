@@ -1,11 +1,13 @@
+# 龙贝格积分
+
 import sympy as sp
 import numpy as np
 import re
 x = sp.symbols('x')
 
 
-def romberg(expr, a, b, n):
-    np.set_printoptions(precision = 12)
+def romberg(expr, a, b, n): # n > 1
+    np.set_printoptions(precision = 12) # 设置np的小数点后位数12
     h = (b - a) / 2**(np.arange(0, n))
     r = np.zeros((n, n))
     r[0][0] = h[0] / 2 * (expr.subs(x, a) + expr.subs(x, b))
@@ -20,4 +22,4 @@ def romberg(expr, a, b, n):
 if __name__ == '__main__':
     expr = sp.sympify(input())
     a, b, n = map(sp.sympify, re.split(r'[\s,;]+', input().strip()))
-    print(romberg(expr, a, b, n))
+    print(romberg(expr, a, b, n)) # 打印n*n的表格
