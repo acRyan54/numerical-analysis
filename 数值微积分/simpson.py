@@ -14,7 +14,7 @@ def Simpson(expr, a, b, m : int):
             expr.subs(x, b)
         ))
     
-    m //= 2 # 如果m不能被2整除，则自动舍去最后一位
+    m //= 2 # 如果m不能被2整除，则自动舍去1
     h = (b - a) / (2 * m)
     i = sp.symbols('i')
     return sp.N(h/3 * (

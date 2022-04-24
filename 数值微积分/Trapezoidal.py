@@ -5,7 +5,7 @@ import re
 x = sp.symbols('x')
 
 
-def Trapizoidal(expr, a, b, m : int):
+def Trapizoidal(expr, a, b, m : int = 1):
     if m == 1: # 非复合情况
         h = b - a
         return sp.N(h/2 * (
