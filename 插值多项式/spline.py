@@ -40,12 +40,13 @@ def cal(n, X, Y, case='a', *, v1=0, vn=0):
         A[n-1, n-3:] = [dx[n-2], -dx[n-3]-dx[n-2], dx[n-3]]
     
     coeff = np.zeros((n, 4))
-    coeff[..., 0] = Y #a
-    coeff[..., 2] = np.linalg.solve(A, r).flatten() #c
+    # coeff的列分别为a,b,c,d
+    coeff[..., 0] = Y # 系数a
+    coeff[..., 2] = np.linalg.solve(A, r).flatten() # 系数c
     for i in range(n-1):
-        coeff[i, 1] = dy[i]/dx[i] - dx[i]/3 * (coeff[i+1, 2] + 2*coeff[i, 2]) #b
-        coeff[i, 3] = (coeff[i+1, 2] - coeff[i, 2])/(3*dx[i]) #d
-    coeff = coeff[:-1, ...]
+        coeff[i, 1] = dy[i]/dx[i] - dx[i]/3 * (coeff[i+1, 2] + 2*coeff[i, 2]) # 系数b
+        coeff[i, 3] = (coeff[i+1, 2] - coeff[i, 2])/(3*dx[i]) # 系数d
+    coeff = coeff[:-1, ...] # 前n-1行为n-1个样条函数的系数
     
     p1 = plot(show=False)
     for i in range(n-1):
@@ -64,8 +65,8 @@ if __name__ == '__main__':
         recv = re.split(r'[\s,]+', input().strip())
         X.append(eval(recv[0]))
         Y.append(eval(recv[1]))
-    case = input().strip()
-    S, P = cal(n, X, Y, case)
+    # case = input().strip()
+    S, P = cal(n, X, Y, 'a')
     for i in S:
         print(i)
     P.show()
