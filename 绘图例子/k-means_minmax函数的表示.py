@@ -16,7 +16,7 @@ Z = func(X, Y)
 
 
 fig = plt.figure()
-ax = plt.axes(projection='3d')
+ax = plt.axes()
 ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap = 'rainbow')
 ax.set_xlabel('x')
 ax.set_ylabel('y')
